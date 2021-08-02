@@ -26,7 +26,7 @@ The code run on python v3.8.5 and several external libraries listed under requir
 ### Run the code
 - **Set-up configuration files** 
   - _setup.py_: specify data and results directory. Currently pointing to ./data and ./results. 
-  -
+  
 - **(Optional) Train intramodality registraion networks** 
   - _scripts/Registration/*/train.py_: train intramodality registration networks with desired parameters in configFiles from the same directory and from command line. Pre-trained registration networks are available in the results folder for both the Allen and BigBrain datasets.
 
