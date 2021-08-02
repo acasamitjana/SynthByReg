@@ -6,10 +6,10 @@ from database.BigBrain import data_loader as DL_BigBrain
 
 
 ALLEN_subset = {
-    'BASE_DIR': join(DATA_DIR, 'Allen_subset_labels'),
-    'HISTOLOGY_DIR': join(DATA_DIR, 'Allen_subset_labels','histo'),
-    'MRI_DIR': join(DATA_DIR, 'Allen_subset_labels','mri'),
-    'LANDMARKS_DIR': join(DATA_DIR, 'Allen_subset_labels', 'landmarks'),
+    'BASE_DIR': join(DATA_DIR, 'Allen_labels'),
+    'HISTOLOGY_DIR': join(DATA_DIR, 'Allen_labels','histo'),
+    'MRI_DIR': join(DATA_DIR, 'Allen_labels','mri'),
+    'LANDMARKS_DIR': join(DATA_DIR, 'Allen_labels', 'landmarks'),
     'NAME': 'Allen_subset',
     'DATA_FILE': 'slice_id.txt',
     'DATA_LOADER': DL_Allen_subset
