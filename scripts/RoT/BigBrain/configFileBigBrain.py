@@ -4,7 +4,7 @@ from os.path import join
 from src.utils.image_transforms import ScaleNormalization, NonLinearParams, AffineParams, CropParams
 from database import databaseConfig
 
-BASE_DIR = '/home/acasamitjana/Results/RegSyn/BigBrain/InfoNCE/DEF'
+BASE_DIR = '/home/acasamitjana/Results/RegSyn/BigBrain/RoT'
 
 CONFIG = {
     'DB_CONFIG': databaseConfig.BigBrain,
@@ -53,13 +53,7 @@ CONFIG = {
     'LOG_INTERVAL': 1,
     'SAVE_MODEL_FREQUENCY': 100,
 
-    'PARENT_DIRECTORY': '2_NCE_SIGMOID'
+    'PARENT_DIRECTORY': ''
 }
 
 CONFIG['RESULTS_DIR'] = join(BASE_DIR, CONFIG['PARENT_DIRECTORY'], '')
-
-
-CONFIG_REFINE = copy.copy(CONFIG)
-CONFIG_REFINE['PARENT_DIRECTORY'] += '/REFINE'
-CONFIG_REFINE['RESULTS_DIR'] = join(BASE_DIR, CONFIG_REFINE['PARENT_DIRECTORY'], '')
-
