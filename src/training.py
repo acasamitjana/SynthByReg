@@ -882,7 +882,7 @@ class InfoNCENoGAN(InfoNCE):
 
         return self.callbacks
 
-    def train(self, model_dict, optimizer_dict, generator_train, weakly_flag, bidir_flag, **kwargs):
+    def train(self, model_dict, optimizer_dict, generator_train, weakly_flag, **kwargs):
         for cb in self.callbacks:
             cb.on_train_init(model_dict, starting_epoch=self.parameter_dict['STARTING_EPOCH'])
 
