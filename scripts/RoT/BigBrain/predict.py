@@ -13,7 +13,7 @@ from PIL import Image
 from src import models, datasets, testing
 from src.utils.image_utils import tanh2im
 from src.utils.visualization import slices, plot_results
-from scripts.InfoNCE.BigBrain import configFileBigBrain as configFile
+from scripts.RoT.BigBrain import configFileBigBrain as configFile
 
 plt.switch_backend('Agg')
 
@@ -37,7 +37,7 @@ l_reg_l1 = arguments.l_reg_l1
 l_regsmooth = arguments.l_regsmooth
 l_GAN = arguments.l_GAN
 
-parameter_dict = configFile.CONFIG_RoT
+parameter_dict = configFile.CONFIG
 
 if l_reg_l1 is not None: parameter_dict['LAMBDA_REGISTRATION_L1'] = float(l_reg_l1)
 if l_regsmooth is not None: parameter_dict['LAMBDA_REGISTRATION_SMOOTHNESS'] = float(l_regsmooth)

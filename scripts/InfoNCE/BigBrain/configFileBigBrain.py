@@ -1,10 +1,11 @@
 import copy
 from os.path import join
 
+from setup import RESULTS_DIR
 from src.utils.image_transforms import ScaleNormalization, NonLinearParams, AffineParams, CropParams
 from database import databaseConfig
 
-BASE_DIR = '/home/acasamitjana/Results/RegSyn/BigBrain/InfoNCE/DEF'
+BASE_DIR = join(RESULTS_DIR, 'BigBrain', 'InfoNCE')
 
 CONFIG = {
     'DB_CONFIG': databaseConfig.BigBrain,
@@ -26,7 +27,7 @@ CONFIG = {
 
     'WEIGHTS_SEGMENTATION': '',
     'WEIGHTS_REGISTRATION_MRI_TANH': '',
-    'WEIGHTS_REGISTRATION_MRI_SIGMOID': '/home/acasamitjana/Results/RegSyn/BigBrain/Registration/MRI_NCC/D2_R1.0_S0.1/sigmoid_bidir_3neigh_noDA/checkpoints/model_checkpoint.BO.pth',
+    'WEIGHTS_REGISTRATION_MRI_SIGMOID': join(RESULTS_DIR, 'BigBrain', 'Registration', 'model_checkpoint.BO.pth'),
     'WEIGHTS_REGISTRATION_HISTO_TANH': '',
 
     'N_CLASSES_SEGMENTATION': 4,
@@ -39,10 +40,10 @@ CONFIG = {
     'LOSS_GAN': 'LSGAN',
 
     'LAMBDA_GAN': 1,
-    'LAMBDA_REGISTRATION_NCC': 1,
+    'LAMBDA_REGISTRATION_NCC': 0,
     'LAMBDA_REGISTRATION_L1': 1,
-    'LAMBDA_REGISTRATION_SMOOTHNESS': 1,
-    'LAMBDA_NCE': 0.2,
+    'LAMBDA_REGISTRATION_SMOOTHNESS': 0.1,
+    'LAMBDA_NCE': 0.02,
 
     'TEMPERATURE': 0.05,
     'NUM_LAYERS_DISCRIMINATOR': 3,

@@ -1,10 +1,11 @@
 import copy
 from os.path import join
 
+from setup import RESULTS_DIR
 from src.utils.image_transforms import ScaleNormalization, NonLinearParams, AffineParams, CropParams
 from database import databaseConfig
 
-BASE_DIR = '/home/acasamitjana/Results/RegSyn/BigBrain/RoT'
+BASE_DIR = join(RESULTS_DIR, 'BigBrain', 'CycleGAN')
 
 CONFIG = {
     'DB_CONFIG': databaseConfig.BigBrain,
@@ -23,11 +24,6 @@ CONFIG = {
     'LEARNING_RATE': {'generator': 2e-4, 'discriminator': 2e-4}, #{'generator': 2e-5, 'discriminator': 2e-5},
     'EPOCH_DECAY_LR': 0,
     'STARTING_EPOCH': 0,
-
-    'WEIGHTS_SEGMENTATION': '',
-    'WEIGHTS_REGISTRATION_MRI_TANH': '',
-    'WEIGHTS_REGISTRATION_MRI_SIGMOID': '/home/acasamitjana/Results/RegSyn/BigBrain/Registration/MRI_NCC/D2_R1.0_S0.1/sigmoid_bidir_3neigh_noDA/checkpoints/model_checkpoint.BO.pth',
-    'WEIGHTS_REGISTRATION_HISTO_TANH': '',
 
     'N_CLASSES_SEGMENTATION': 4,
     'N_CLASSES_NETWORK': 8,

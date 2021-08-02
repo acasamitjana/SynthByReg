@@ -1,10 +1,11 @@
 import copy
 from os.path import join
 
+from setup import RESULTS_DIR
 from src.utils.image_transforms import ScaleNormalization, NonLinearParams, AffineParams, CropParams
 from database import databaseConfig
 
-BASE_DIR = '/home/acasamitjana/Results/RegSyn/Allen_labels/RoT/'
+BASE_DIR = join(RESULTS_DIR, 'Allen_labels', 'RoT')
 
 CONFIG = {
     'DB_CONFIG': databaseConfig.ALLEN_subset,
@@ -26,10 +27,6 @@ CONFIG = {
     'LEARNING_RATE': {'generator': 2e-4, 'discriminator': 2e-4},
     'EPOCH_DECAY_LR': 0,
     'STARTING_EPOCH': 0,
-
-    'WEIGHTS_SEGMENTATION': '',
-    'WEIGHTS_REGISTRATION_MRI_TANH': '',
-    'WEIGHTS_REGISTRATION_MRI_SIGMOID': '/home/acasamitjana/Results/RegSyn/Allen_labels/Registration/MRI_NCC/D2_R1_S0.1/sigmoid_bidir_2neigh_noDA/checkpoints/model_checkpoint.BO.pth',
 
     'N_CLASSES_SEGMENTATION': 5,
     'N_CLASSES_NETWORK': 8,

@@ -12,7 +12,7 @@ from src.callbacks import LRDecay
 from src.utils.tensor_utils import TensorDeformation
 from src.utils.io import DebugWriter, ResultsWriter, create_results_dir, ExperimentWriter, worker_init_fn
 from src.training import RoT
-from scripts.InfoNCE.BigBrain import configFileBigBrain
+from scripts.RoT.BigBrain import configFileBigBrain
 
 ####################################
 ######## GLOBAL  PARAMETERS ########
@@ -24,9 +24,6 @@ time_start = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
 mask_flag = True
 clip_grad = False
-num_patches = 256
-num_nc = 256
-nce_layers = [0, 4, 8, 12, 16, 20]
 
 
 """ PARSE ARGUMENTS FROM CLI """
@@ -44,12 +41,9 @@ l_GAN = arguments.l_GAN
 
 rid_list = None
 configFile = configFileBigBrain
-parameter_dict = configFile.CONFIG_RoT
+parameter_dict = configFile.CONFIG
 parameter_dict['mask_flag'] = mask_flag
 parameter_dict['clip_grad'] = clip_grad
-parameter_dict['num_patches'] = num_patches
-parameter_dict['num_nc'] = num_nc
-parameter_dict['nce_layers'] = nce_layers
 
 if l_reg_l1 is not None: parameter_dict['LAMBDA_REGISTRATION_L1'] = float(l_reg_l1)
 if l_regsmooth is not None: parameter_dict['LAMBDA_REGISTRATION_SMOOTHNESS'] = float(l_regsmooth)
@@ -136,10 +130,6 @@ G_M = models.ResnetGenerator(
     tanh=True if 'TANH' in parameter_dict['PARENT_DIRECTORY'] else False
 )
 
-# Feature extractor Network
-F_M = models.PatchSampleF(
-    use_mlp=True, device=device, nc=num_nc
-)
 
 registration_M = models.VxmDense(
     nb_unet_features=[parameter_dict['ENC_NF_REG'], parameter_dict['DEC_NF_REG']],
@@ -156,7 +146,7 @@ discriminator_M = models.NLayerDiscriminator(
     device=device, init_type='xavier'
 )
 
-model_dict = {'G_M': G_M, 'D_M': discriminator_M, 'F_M': F_M, 'R_M': registration_M}
+model_dict = {'G_M': G_M, 'D_M': discriminator_M, 'R_M': registration_M}
 
 da_model = TensorDeformation(image_shape, parameter_dict['NONLINEAR'].lowres_size, device)
 
