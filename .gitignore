@@ -1,0 +1,8 @@
+# PyCharm files
+*/__pycache__/*
+*pyc
+
+#Nifty and images
+*.png
+*.nii
+*.nii.gz
