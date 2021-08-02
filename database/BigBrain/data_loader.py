@@ -154,7 +154,7 @@ class DataLoader(object):
     def _initialize_dataset(self, rid_list=None):
 
         self.subject_dict = {}
-        with open(join(self.database_config['BASE_DIR'], 'slice_id.txt'), 'r') as csvfile:
+        with open(join(self.database_config['BASE_DIR'], self.database_config['DATA_FILE']), 'r') as csvfile:
             csvreader = csv.DictReader(csvfile)
             for row in csvreader:
                 if rid_list is not None:
