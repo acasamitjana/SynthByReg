@@ -3,6 +3,5 @@
 *pyc
 
 #Nifty and images
-*.png
 *.nii
 *.nii.gz
